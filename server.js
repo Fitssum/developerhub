@@ -1,3 +1,5 @@
+var cool = require('cool-ascii-faces');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');//easy utility for directives paths
@@ -19,6 +21,10 @@ app.use('/api', api);
 //Return other routes to angular index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+app.get('/cool', function(request, response) {
+  response.send(cool());
 });
 
 //set port
